@@ -1,6 +1,5 @@
 #ifndef w_h
 #define w_h
-#include <iostream>
 
 class Wektor{
 	double x,y,z;
@@ -10,11 +9,12 @@ public:
 
 	Wektor& operator=(Wektor&);
 	void printv();
+	void putv(double, double, double);
 	Wektor operator+(const Wektor&)const;
 	Wektor operator-(const Wektor&)const;
 	Wektor operator*(double)const;
 	double operator*(const Wektor&)const;
-	Wektor operator/(const Wektor&)const;//
+	Wektor operator/(double k)const;
 	Wektor iloczynW(const Wektor&)const;
 	bool operator==(const Wektor&)const;
 	bool operator!=(const Wektor&)const;
@@ -23,6 +23,10 @@ public:
 
 };
 
+class zero_devision{
+public:
+	zero_devision();
+};
+
 Wektor operator*(double, Wektor);
-Wektor operator/(double, Wektor);//
 #endif

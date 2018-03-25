@@ -1,5 +1,5 @@
-
 #include "Wektor.h"
+#include <iostream>
 
 using namespace std;
 
@@ -18,12 +18,16 @@ void Wektor::printv(){
 	printf("%lf %lf %lf\n",x,y,z);
 }
 
+void Wektor::putv(double a, double b, double c){
+	x = a; y = b; z = c;
+}
+
 Wektor Wektor::operator+(const Wektor &w2)const{
 	return Wektor(x+w2.x, y+w2.y, z+w2.z);
 }
 
-Wektor Wektor::operator-(const Wektor& w2)const {
-	return Wektor(x-w2.x, y-w2.y, z-w2.z);
+Wektor Wektor::operator-(const Wektor& w)const {
+	return *this+(w*(-1));
 }
 
 Wektor Wektor::operator*(double k)const{
@@ -32,6 +36,11 @@ Wektor Wektor::operator*(double k)const{
 
 double Wektor::operator*(const Wektor &w)const{
 	return x*w.x+y*w.y+z*w.z;
+}
+
+Wektor Wektor::operator/(double k)const{
+	if (!k) throw zero_devision();
+	return (*this)*(1/k);
 }
 
 Wektor Wektor::iloczynW(const Wektor &w)const{
@@ -56,3 +65,6 @@ void Wektor::normalizacja(){
 Wektor operator*(double k, Wektor w){
 	return (w*k);
 }
+
+
+zero_devision::zero_devision(){printf("ERR\n");}

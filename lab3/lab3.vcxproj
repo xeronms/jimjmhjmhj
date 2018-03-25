@@ -76,12 +76,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Macierz.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Macierz2.cpp" />
     <ClCompile Include="Wektor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Macierz.h" />
     <ClInclude Include="Wektor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

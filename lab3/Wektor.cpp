@@ -10,7 +10,7 @@ void Wektor::printv(){
 	printf("%lf %lf %lf\n",x,y,z);
 }
 
-Wektor Wektor::operator+(Wektor w2)const{
+Wektor Wektor::operator+(const Wektor &w2)const{
 	return Wektor(x+w2.x, y+w2.y, z+w2.z);
 }
 
@@ -18,19 +18,19 @@ Wektor Wektor::operator*(double k)const{
 	return Wektor(x*k, y*k, z*k);
 }
 
-double Wektor::operator*(Wektor w)const{
+double Wektor::operator*(const Wektor &w)const{
 	return x*w.x+y*w.y+z*w.z;
 }
 
-Wektor Wektor::iloczynW(Wektor w)const{
+Wektor Wektor::iloczynW(const Wektor &w)const{
 	return Wektor(y*w.z-z*w.y, z*w.x-x*w.z, x*w.y-y*w.x);
 }
 
-bool Wektor::operator==(Wektor w)const{
+bool Wektor::operator==(const Wektor &w)const{
 	return x==w.x && y==w.y && z==w.z;
 }
 
-bool Wektor::operator!=(Wektor w)const{
+bool Wektor::operator!=(const Wektor &w)const{
 	return !(*this==w);
 }
 

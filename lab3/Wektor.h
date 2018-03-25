@@ -6,11 +6,13 @@ class Wektor{
 	double x,y,z;
 public:
 	Wektor(double a=0, double b=0, double c=0);
+	Wektor(Wektor&);
+	~Wektor();
 
-	
+	Wektor& operator=(Wektor&) const;
 	void printv();
 	Wektor operator+(const Wektor&)const;
-	Wektor operator-(const Wektor&)const;//
+	Wektor operator-(const Wektor&)const;
 	Wektor operator*(double)const;
 	double operator*(const Wektor&)const;
 	Wektor operator/(const Wektor&)const;//

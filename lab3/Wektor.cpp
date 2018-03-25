@@ -13,6 +13,11 @@ void Wektor::printv(){
 Wektor Wektor::operator+(const Wektor &w2)const{
 	return Wektor(x+w2.x, y+w2.y, z+w2.z);
 }
+/*
+Wektor operator-(const Wektor& w)const {
+	return Wektor
+
+}*/
 
 Wektor Wektor::operator*(double k)const{
 	return Wektor(x*k, y*k, z*k);

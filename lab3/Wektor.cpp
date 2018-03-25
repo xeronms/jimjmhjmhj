@@ -6,6 +6,14 @@ using namespace std;
 
 Wektor::Wektor(double a, double b, double c):x(a),y(b),z(c){}
 
+Wektor::Wektor(Wektor& w):x(w.x),y(w.y),z(w.z){}
+
+
+Wektor& Wektor::operator=(Wektor& w){
+	x = w.x; y = w.y; z = w.z;
+	return *this;
+}
+
 void Wektor::printv(){
 	printf("%lf %lf %lf\n",x,y,z);
 }
@@ -13,11 +21,10 @@ void Wektor::printv(){
 Wektor Wektor::operator+(const Wektor &w2)const{
 	return Wektor(x+w2.x, y+w2.y, z+w2.z);
 }
-/*
-Wektor operator-(const Wektor& w)const {
-	return Wektor
 
-}*/
+Wektor Wektor::operator-(const Wektor& w2)const {
+	return Wektor(x-w2.x, y-w2.y, z-w2.z);
+}
 
 Wektor Wektor::operator*(double k)const{
 	return Wektor(x*k, y*k, z*k);

@@ -7,9 +7,8 @@ class Wektor{
 public:
 	Wektor(double a=0, double b=0, double c=0);
 	Wektor(Wektor&);
-	~Wektor();
 
-	Wektor& operator=(Wektor&) const;
+	Wektor& operator=(Wektor&);
 	void printv();
 	Wektor operator+(const Wektor&)const;
 	Wektor operator-(const Wektor&)const;

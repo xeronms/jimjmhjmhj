@@ -8,6 +8,8 @@ class BigInt{
 	// len = numbers of digits + '\0'
 	bool positive; 
 
+	void check_length();
+
 public:
 	BigInt(int);
 	BigInt(char*);
@@ -20,6 +22,7 @@ public:
 	BigInt operator+(const BigInt&) const;
 	BigInt operator-(const BigInt&) const;
 	BigInt operator-() const;
+	BigInt operator*(const BigInt&) const;
 
 	bool operator==(const BigInt&) const;
 	bool operator!=(const BigInt&) const;

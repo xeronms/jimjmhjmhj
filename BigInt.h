@@ -11,18 +11,25 @@ class BigInt{
 	void check_length();
 
 public:
-	BigInt(int);
+	BigInt(long);
 	BigInt(char*);
 	BigInt(bool, unsigned int);
 	BigInt(const BigInt&);
 	~BigInt();
-	BigInt& operator=(const BigInt);
+	BigInt& operator=(const BigInt&);
 
 	unsigned char operator[](unsigned int) const;
 	BigInt operator+(const BigInt&) const;
 	BigInt operator-(const BigInt&) const;
 	BigInt operator-() const;
 	BigInt operator*(const BigInt&) const;
+
+	BigInt operator+(long) const;
+	BigInt operator-(long) const;
+	BigInt operator*(long) const;
+
+	BigInt operator++() const;
+	BigInt operator--() const;
 
 	bool operator==(const BigInt&) const;
 	bool operator!=(const BigInt&) const;
@@ -36,5 +43,8 @@ public:
 	friend std::ostream& operator<<(std::ostream&, const BigInt&);
 };
 
+BigInt operator+(long, const BigInt&);
+BigInt operator-(long, const BigInt&);
+BigInt operator*(long, const BigInt&);
 
 #endif

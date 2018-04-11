@@ -5,14 +5,14 @@
 #include <cctype>
 
 
-BigInt::BigInt(int a = 0){
+BigInt::BigInt(long a = 0){
 	if (a>=0) positive = 1;
 	else {
 		positive = 0;
 		a *= -1;
 	}
 
-	int b = a;
+	long b = a;
 	len = 0;
 	for (unsigned int j=0; b; ++j){
 		++len;
@@ -27,7 +27,7 @@ BigInt::BigInt(int a = 0){
 }
 
 BigInt::BigInt(bool p, unsigned int l):len(l),positive(p){
-	dig = new char [len];
+	dig = new char [l];
 }
 
 BigInt::BigInt(char* a){
@@ -57,10 +57,20 @@ BigInt::BigInt(const BigInt& a){
 
 BigInt::~BigInt(){
 	delete [] dig;
+	len = 0;
 }
 
 
-//BigInt& BigInt::operator=(const BigInt a){}
+
+BigInt& BigInt::operator=(const BigInt& a){
+	delete [] dig;
+	len = a.len;
+	positive = a.positive;
+	dig = new char [a.len];
+	memcpy(dig, a.dig, a.len*sizeof(char));
+	
+	return *this;
+}
 
 unsigned char BigInt::operator[](unsigned int i) const{
 	return this->dig[i];
@@ -167,7 +177,7 @@ BigInt BigInt::operator*(const BigInt& a) const{
 
 	BigInt b( 1 ,len+a.len );
 	char tmp = 0; unsigned int index;
-	for ( unsigned int i = 0 ; i < b.len; ++b.len) b.dig[i]=0;
+	for ( unsigned int i = 0 ; i < b.len; ++i) b.dig[i]=0;
 	
 	if (positive&&!a.positive) b.positive=0;
 	else if (!positive&&a.positive) b.positive=0;
@@ -181,13 +191,39 @@ BigInt BigInt::operator*(const BigInt& a) const{
 		}
 		b.dig[index] += tmp;
 	}
-	//b.check_length();
+	b.check_length();
 
 	return b;
 }
 
+BigInt BigInt::operator++() const{
+	return *this+1;
+}
+BigInt BigInt::operator--() const{
+	return *this-1;
+}
+BigInt BigInt::operator+(long k) const{
+	return *this+BigInt(k);
+}
+BigInt operator+(long k, const BigInt& a){
+	return a+k;
+}
+BigInt BigInt::operator-(long k) const{
+	return *this-BigInt(k);
+}
+BigInt operator-(long k, const BigInt& a){
+	return -(a-k);
+}
+BigInt BigInt::operator*(long k) const{
+	return *this*BigInt(k);
+}
+BigInt operator*(long k, const BigInt& a){
+	return a*k;
+}
 
-//ew moge zrobic tak ¿e BigInt b( buf.size ) i potem a = b ale nwm czy tak mozna
+
+
+//ew potem moge zrobic tak ¿e BigInt b( buf.size ) i potem b =a
 std::istream& operator>>(std::istream& is, BigInt& a){
 	std::string buf;
 	unsigned int prev_a_len = a.len;
@@ -228,12 +264,13 @@ std::ostream& operator<<(std::ostream& os, const BigInt& a){
 int main(){
 	BigInt a("-13");
 	BigInt b(290);
-	BigInt c(b);
-	BigInt d(3);
-	BigInt e(6);
+	BigInt c(a); c=b;
+	BigInt d(12);
+	BigInt e(6); 
 	//std::cin >> d;
 	std::cout << (a==b) << (d<c) <<'\t' << std::endl;
-	std::cout << a << b << c << d << (b+c) << a-d << e-d << b-c << e*d << std::endl;
+	std::cout << a << b << c << d << (b+5) << a-d << e-d << b-c << std::endl;
+	std::cout << d*e << b*53 << std::endl;
 	return 0;
 }
 

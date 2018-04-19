@@ -25,7 +25,17 @@ char cmd;
 is >> cmd;
 switchcase{
 	is >> x>>y>>R>>r>>g>>b
-
+	
+	
+	
+	
+	class Ptak{
+		virtual void lec = 0; //funkcja czysto wirtualna (nie ma implementacji), klasa która ma przynajmniej jedną taką funkcję nazywa się klasą abstrakcyjną, 
+		//jeżeli ma wszystkie czysto wirtualne, to jest czysto abstrakcyjna
+		// tworzy interfejs ale jeszcze nie robimy dalej implementacji
+		
+		//robimy np stos abstrakcyjny (interfejs), a potem robimy stos który dziedziczy z tamtego i nadpisuje wszystkie klasy
+	}
 */ 
 
 

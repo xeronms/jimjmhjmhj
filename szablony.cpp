@@ -15,7 +15,8 @@ int min(int a, int b){
 
 //szablon<typ TYP> //korespondencja seryjna 
 template<typename T>
-T min(T a, T b){
+// stale referencje
+const T& min(const T & a,T const & b){
 	return a<b?a:b;
 }
 

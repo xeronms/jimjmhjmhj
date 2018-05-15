@@ -1,11 +1,11 @@
-#include "Wektor.h"
+#include "Vector.h"
 #include <iostream>
 
 using namespace std;
 
 int main(){
-	Wektor w(1,2,3);
-	Wektor w2(2.5,6,11);
+	Vector w(1,2,3);
+	Vector w2(2.5,6,11);
 
 	//przykladowe dzialania
 
